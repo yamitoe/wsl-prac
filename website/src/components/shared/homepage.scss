@@ -1,0 +1,154 @@
+$dark-color: hsla(206, 9%, 15%, 1);
+$darklight-color:  hsla(214, 7%, 19%, 1);
+$darklightlight-color:  hsla(214, 7%, 25%, 1);
+$darklightlight-text:hsla(214, 7%, 68%, 1);
+
+$whitetext-main: hsla(0, 0%, 90%, 1);
+$whitetext-header: hsla(0, 0%, 90%, 1);
+
+section.container-home{
+    padding: 5px;
+    main{
+        display: flex;
+        flex-direction: column;
+        #introduction{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            height: 150px;
+            overflow: hidden;
+            background-image: url(./images/digonalblue.png);
+            opacity: 0.9;
+            div,p{
+                color: hsla(208, 82%, 30%, 1); ;
+                font-weight: 600;
+                font-size: large;
+            }
+        }
+
+        main{
+            padding: 5px;
+        }
+    
+        footer{
+            flex-grow: 1;
+        }
+    
+        section{
+           margin-bottom: 10px;
+            background-color: $darklight-color; 
+        }
+    
+        h3{
+            margin:0 0 5px 0;
+            font-weight: 600;
+            color: $whitetext-header;
+        }
+        .container-projects{
+            #projects{
+                display: flex;
+                flex-wrap: wrap;
+                article{
+                    margin: 5px;
+                    padding: 3px;
+                    background-color: $darklightlight-color; 
+                    width: 500px;
+                    word-break: break-all;
+                    &:hover{
+                        filter: brightness(0.80);
+                    }
+                }
+    
+                .details{
+                    margin-top: 4px; 
+                    color: $darklightlight-text ;
+                }
+    
+                img{
+                    width: 100%;
+                    height: 300px;
+                //Replace with animated gif for specefic project
+                  &:hover{
+                      &.FacebookUIPic{
+                        content: url("./images/facebookuiGif.gif");
+                      }
+                      &.WeatherPic{
+                        content: url("./images/weatherGif.gif");
+                      }
+                      &.Tic-Tac-ToePic{
+                        content: url("./images/tictacGif.gif");
+                      }
+                   
+                  }
+                }
+                video{
+                    width: 100%;
+                    display: none;
+                }
+            }
+    
+            h2{
+                font-weight: 600;
+                font-size: large;
+                margin: 0;
+            }
+    
+            .github{
+                margin-top: 5px;
+                a{
+                    color: hsla(108, 82%, 89%, 1);
+                    background-color: hsla(108, 82%, 19%, 1);
+                    &:hover{
+                        background-color: hsla(108, 82%, 29%, 1);
+                    }
+                }
+            }
+    
+            //Color of each project
+            .projectTag{
+                color: hsla(208, 82%, 70%, 1);
+                &:hover{
+                    color: hsla(208, 82%, 50%, 1);
+                }
+            }
+        }
+    }
+}
+
+section.skills{
+    ul{
+        display: flex;
+        padding: 0px;
+        flex-wrap: wrap;
+        li{
+            list-style: none;
+            margin: 5px;
+            padding: 8px;
+            background-color: hsla(208, 82%, 35%, 1);
+            color: hsla(208, 82%, 89%, 1);
+            text-align: center;
+            &:first-child{
+                margin-left: 0;
+            }
+        }
+        
+    }
+}
+
+
+.fade-effect-enter{
+    transform: translateX(150%);
+}
+.fade-effect-enter-active{
+    transform: translateX(0%);
+    transition: all 1000ms ease;
+
+}
+.fade-effect-exit{
+    transform: translateX(0%);
+}
+.fade-effect-exit-active{
+    transform: translateX(150%);
+    transition: all 1000ms ease;
+}

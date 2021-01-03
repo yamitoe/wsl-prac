@@ -1,0 +1,29 @@
+$dark-color: hsla(206, 9%, 15%, 1);
+$darklight-color:  hsla(214, 7%, 19%, 1);
+$darklightlight-color:  hsla(214, 7%, 25%, 1);
+$darklightlight-text:hsla(214, 7%, 68%, 1);
+
+$whitetext-main: hsla(0, 0%, 90%, 1);
+$whitetext-header: hsla(0, 0%, 90%, 1);
+
+body{
+    //overall anchors
+    #home{
+        color: $whitetext-main;
+        &:hover{
+            color: $darklightlight-text;
+        }
+    }
+    &[backcolor="home"]{
+        background-color: $dark-color; 
+        color: $whitetext-main;
+        //overall container  
+    }
+    &[backcolor="weatherapp"]{
+        background-color: hsla(208, 82%, 35%, 1);  
+    }
+    &[backcolor="tictac"]{
+        background-color: rgb(129, 166, 199);  
+    }
+    
+}
