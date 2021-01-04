@@ -59,8 +59,8 @@ export function Homepage() {
           </CSSTransition>
         </section>
         <section className="container-projects">
-          <h3>Projects</h3>
-          <section id="projects">
+          <h1>Projects</h1>
+          <section className="projects">
             {displayProject(
               "/facebookui",
               "FacebookUI",
@@ -85,30 +85,33 @@ export function Homepage() {
               tictacFav
             )}
           </section>
-          <section>
-            <h2>External Projects</h2>
+          <h3>External Projects</h3>
+          <section className="projects">
             <article>
               <video src={reactNativeApp} width="500" controls></video>
-              <h2 className="projectTag">React Native App</h2>
+              <h2 className="projectTag">      
+                <a href="https://snack.expo.io/@supermadinit/reacnativegroceryapp">React Native App (Leaves Site, Use iOS Emulator)</a>
+              </h2>
+              <div style={{marginBottom:"5px"}}>To Expo Demo , Click Header Above for Live Demo</div>
               <div>A grocery list note taker</div>
               <div className="details">
+                <h3>Noteable Features: </h3>
                 <ul>
                   <li>Context Api (Hook and Class Form)</li>
+                  <li>TypeScript</li>
                   <li>Async Storage</li>
-                  <li>SLide to delete</li>
-
+                  <li>Slide to delete</li>
                 </ul>
-                Features: 
-                Context Api (Hook and Class Form)
-                Async Storage
-                SLide to delete
 
+                <p>
+                  The idea behind the app is to help users easily write down what they would
+                  need to buy, in a clean organized list.
+                </p>
+                <p>
+                  There was going to be functionality where you could get notfications if x item time was up
+                  but it ended up being unimplemented.
+                </p>
 
-                The idea behind the app is to help users easily write down what they would
-                need to buy, in a clean organized list.
-
-                There was going to be functionality where you could get notfications if x item time was up
-                but it ended up being unimplemented.
            
               </div>
    

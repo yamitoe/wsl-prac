@@ -40,13 +40,14 @@ section.container-home{
             background-color: $darklight-color; 
         }
     
-        h3{
-            margin:0 0 5px 0;
+        h1,h2,h3{
+            font-size: large;
+            margin:0;
             font-weight: 600;
             color: $whitetext-header;
         }
         .container-projects{
-            #projects{
+            .projects{
                 display: flex;
                 flex-wrap: wrap;
                 article{
@@ -63,6 +64,7 @@ section.container-home{
                 .details{
                     margin-top: 4px; 
                     color: $darklightlight-text ;
+
                 }
     
                 img{
@@ -82,16 +84,6 @@ section.container-home{
                    
                   }
                 }
-                video{
-                    width: 100%;
-                    display: none;
-                }
-            }
-    
-            h2{
-                font-weight: 600;
-                font-size: large;
-                margin: 0;
             }
     
             .github{
@@ -136,7 +128,7 @@ section.skills{
     }
 }
 
-
+//For the intro
 .fade-effect-enter{
     transform: translateX(150%);
 }
