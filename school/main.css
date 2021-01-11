@@ -1,0 +1,19 @@
+strong{
+    color: aqua;
+}
+
+.container-question{
+    display:flex;
+    flex-wrap: wrap;
+    margin: 5px;
+   
+}
+
+.question{
+    background-color: hsl(5, 11%, 66%);
+    margin: 5px;
+}
+
+body{
+    background-color: hsl(5, 11%, 46%);
+}

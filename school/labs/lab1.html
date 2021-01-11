@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="../main.css">
+</head>
+<body>
+
+<h1>Lab1 Hard-Coded-Quiz</h1>
+<section class="container-question">
+    <section class="question">
+        <div> Q1:What is the result?</div>
+        <pre>
+        <code>
+            <strong>let</strong> x = ()=> <strong>console.log</strong>("Apples");
+            x;
+        </code>
+        </pre>
+        <section class="box-answer">
+            <div>Apples</div>
+            <div>Nothing</div>
+            <div>Steve</div>
+        </section>
+        <h3>The answer: </h3>
+        <div>Console would print Apples</div>
+    </section>
+    
+    <section class="question">
+        <div> Q2:What is the result?</div>
+        <pre>
+        <code>
+            <strong>let</strong> x = ()=> <strong>console.log</strong>("Apples");
+        </code>
+        </pre>
+        <section class="box-answer">
+            <div>Apples</div>
+            <div>Nothing</div>
+            <div>Steve</div>
+        </section>
+        <h3>The answer: </h3>
+        <div>Console would print nothing since the variable "x" was never called</div>
+    </section>
+    
+    <section class="question">
+        <div> Q3:Are these to statements equivalent?</div>
+        <pre>
+        <code>
+            <strong>let</strong> x = v=> <strong>console.log</strong>(v);
+            <strong>let</strong> x = v2=> <strong>console.log</strong>(v2);
+        </code>
+        </pre>
+        <section class="box-answer">
+            <div>Yes</div>
+            <div>No</div>
+        </section>
+        <h3>The answer: </h3>
+        <div>Yes they are the same, only difference is the variable names</div>
+    </section>
+    
+    <section class="question">
+        <div> Q4:Is this statement valid?</div>
+        <pre>
+        <code>
+            <strong>let</strong> x = (v,x) => <strong>console.log</strong>(v + " " + x);
+        </code>
+        </pre>
+        <section class="box-answer">
+            <div>Yes</div>
+            <div>No</div>
+        </section>
+        <h3>The answer: </h3>
+        <div>Yes it is valid</div>
+    </section>
+    
+    <section class="question">
+        <div> Q5:Is this statement valid?</div>
+        <pre>
+        <code>
+            <strong>let</strong> x = v,x => <strong>console.log</strong>(v + " " + x);
+        </code>
+        </pre>
+        <section class="box-answer">
+            <div>Yes</div>
+            <div>No</div>
+        </section>
+        <h3>The answer: </h3>
+        <div>No, the brackets around (v,x) are required if listing more than one parameter</div>
+    </section>
+    
+    <section class="question">
+        <div> Q6: What does this print?</div>
+        <pre>
+        <code>
+            <strong>let</strong> x;
+            <strong>console.log</strong>(x ?? "Nada");
+        </code>
+        </pre>
+        <section class="box-answer">
+            <div>Null</div>
+            <div>Nada</div>
+        </section>
+        <h3>The answer: </h3>
+        <div>It will print "Nada" since the variable was null so 
+            operator choose to print the second choice</div>
+    </section>
+</section>
+
+
+<p>This is a paragraph.</p>
+<button>
+    <a href="../index.html">To homepage</a>
+</button>
+
+</body>
+</html>
