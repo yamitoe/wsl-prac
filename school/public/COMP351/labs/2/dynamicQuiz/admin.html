@@ -6,20 +6,51 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./css/lab2.css'>
-    <script src='main.js'></script>
+
     <script>
+        let arrData = [];
+        //Get localstorage
+        function loadData(){
+            if (typeof(Storage) !== "undefined") {
+                // Retrieve  //Data is array in json
+                let data = JSON.parse(localStorage.getItem("quizquestion"));
+                if(data != null){
+                    arrData = [...data];
+                }
+                else{
+                    localStorage.setItem("quizquestion",JSON.stringify([]));
+                }
+                console.log(data);
+
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            }
+        }
+
+        loadData();
+
+        function saveData(domElement){
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem("quizquestion", JSON.stringify(arr));
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            }
+        }
+
         function onAdd(){
-            createTextArea();
+            questionData();
         }
 
         function onDelete(){
             let parentNode = document.getElementsByClassName("container-quizbox");
             let amount = parentNode.length - 1;
-            console.log(amount);
-            parentNode[amount].remove(parentNode[amount]);
+            if(amount >= 0){
+                parentNode[amount].remove(parentNode[amount]);
+            }
         }
 
         function createTextArea(){
+            let main = document.getElementsByTagName("MAIN")[0];
             let test = 1;
             let container = document.createElement("section");
             container.className = "container-quizbox";
@@ -45,20 +76,20 @@
 
             `;
 
-            
-                
-            document.body.appendChild(container);
+            main.appendChild(container);
+            return container;
         }
     </script>
 </head>
 <body>
+    <div id="result"></div>
     <main>
         <h2>Admin Page</h2>
-        <button onclick="onAdd()">Add</button>
-        <button onclick="onSave()">Save</button>
-        <button onclick="onDelete()">Delete</button>
     </main>
-
+    <button onclick="onAdd()">Add</button>
+    <button onclick="onSave()">Save</button>
+    <button onclick="onDelete()">Delete</button>
+    
     
 </body>
 </html>
