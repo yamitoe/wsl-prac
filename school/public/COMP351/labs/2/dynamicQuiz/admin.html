@@ -18,10 +18,9 @@
                     arrData = [...data];
                 }
                 else{
+                    //If its not intialized
                     localStorage.setItem("quizquestion",JSON.stringify([]));
                 }
-                console.log(data);
-
             } else {
                 document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             }
@@ -29,16 +28,29 @@
 
         loadData();
 
-        function saveData(domElement){
+        function onSave(domElement){
             if (typeof(Storage) !== "undefined") {
-                localStorage.setItem("quizquestion", JSON.stringify(arr));
+                if(arrData.length > 0){
+
+                }
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+            }
+        }
+        //Add empty arr to storage
+        function addEmptyArr(){
+            arrData.push([]);
+            if (typeof(Storage) !== "undefined") {
+                localStorage.setItem("quizquestion",JSON.stringify(arrData));
+                
             } else {
                 document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
             }
         }
 
         function onAdd(){
-            questionData();
+            createTextArea();
+            addEmptyArr();
         }
 
         function onDelete(){
@@ -77,7 +89,6 @@
             `;
 
             main.appendChild(container);
-            return container;
         }
     </script>
 </head>
