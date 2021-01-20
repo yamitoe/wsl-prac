@@ -12,6 +12,7 @@
         //Get localstorage
         function loadData(){
             if (typeof(Storage) !== "undefined") {
+                localStorage.clear();  //FOR TESTING REMOVE
                 // Retrieve  //Data is array in json
                 let data = JSON.parse(localStorage.getItem("quizquestion"));
                 if(data != null){
@@ -32,7 +33,30 @@
             if (typeof(Storage) !== "undefined") {
                 //If arr has any questions to save
                 if(arrData.length > 0){
+                    let questionsDOMArr = document.getElementsByClassName("container-quizbox");
+                    for (const iterator of questionsDOMArr) {
+                        // console.log(iterator);
+                        //Don't need the Question number so filter it out //case sensitive
+                        let textData = Array
+                            .from(iterator.children)
+                            .filter(node=>{
+                             let check = false;
+                                if(node.nodeName == "DIV" && node.className =="question"){
+                                    check = true;
+                                    Array
+                                        .from(node.children)
+                                        .filter(node=>node.name != "quiz");
+                                    
+                                }
+                                else{
+                                    check = node.nodeName!= "H2"
+                                }
+                                return check;
+                        });
 
+                        console.log(textData);
+                        textData.forEach(node=>console.log(node.value));
+                    }
                 }
             } else {
                 document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
