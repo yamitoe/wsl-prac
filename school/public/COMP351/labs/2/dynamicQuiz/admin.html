@@ -29,29 +29,37 @@
 
         loadData();
 
-        function onSave(domElement){
+        function onSave(){
+            let updatedArr = [];
+            let tempArr= [];
+            let o = {};
             if (typeof(Storage) !== "undefined") {
                 //If arr has any questions to save
                 if(arrData.length > 0){
                     let questionsDOMArr = document.getElementsByClassName("container-quizbox");
                     for (const iterator of questionsDOMArr) {
-                        // console.log(iterator);
                         //Don't need the Question number so filter it out //case sensitive
                         let textData = Array
                             .from(iterator.children)
                             .filter(node=>check = node.nodeName!= "H2");
-
-                        console.log(textData);
+                        // Grab the data from input fields to store away
                         textData.forEach(node=>{
                             if(node.nodeName == "DIV" && node.className =="question"){
-                              console.log(node.children[1].value);
-                                
+                            //   console.log(node.children[1].value);
+                                tempArr.push(node.children[1].value); 
                             }
                             else{
-                                console.log(node.value);
+                                // {question: ""}
+                                o.question = node.value;
                             }
                         });
+                         // {question: "" , choices: [1,1,1,1]}
+                        o.choices = tempArr;
+                        tempArr.clear;
+                        //To be fused with localstorage
+                        updatedArr.push(o);
                     }
+                    console.log(updatedArr);
                 }
             } else {
                 document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
