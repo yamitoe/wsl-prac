@@ -39,23 +39,18 @@
                         //Don't need the Question number so filter it out //case sensitive
                         let textData = Array
                             .from(iterator.children)
-                            .filter(node=>{
-                             let check = false;
-                                if(node.nodeName == "DIV" && node.className =="question"){
-                                    check = true;
-                                    Array
-                                        .from(node.children)
-                                        .filter(node=>node.name != "quiz");
-                                    
-                                }
-                                else{
-                                    check = node.nodeName!= "H2"
-                                }
-                                return check;
-                        });
+                            .filter(node=>check = node.nodeName!= "H2");
 
                         console.log(textData);
-                        textData.forEach(node=>console.log(node.value));
+                        textData.forEach(node=>{
+                            if(node.nodeName == "DIV" && node.className =="question"){
+                              console.log(node.children[1].value);
+                                
+                            }
+                            else{
+                                console.log(node.value);
+                            }
+                        });
                     }
                 }
             } else {
