@@ -13,20 +13,36 @@
         }
 
         function onDelete(){
-
+            let parentNode = document.getElementsByClassName("container-quizbox");
+            let amount = parentNode.length - 1;
+            console.log(amount);
+            parentNode[amount].remove(parentNode[amount]);
         }
 
         function createTextArea(){
+            let test = 1;
             let container = document.createElement("section");
             container.className = "container-quizbox";
             container.innerHTML =`   
+                <h2>Question ${test} </h2>
                 <textarea name="" id="" cols="25" rows="8"></textarea>
-                <input type="radio" name="quiz">
-                <input type="text">
-                <input type="radio" name="quiz">
-                <input type="text">
-                <input type="radio" name="quiz">
-                <input type="text">
+                <div class="question">
+                    <input type="radio" name="quiz">
+                    <input type="text">      
+                </div>
+                <div class="question">
+                    <input type="radio" name="quiz">
+                    <input type="text">      
+                </div>
+                <div class="question">
+                    <input type="radio" name="quiz">
+                    <input type="text">      
+                </div>
+                <div class="question">
+                    <input type="radio" name="quiz">
+                    <input type="text">      
+                </div>
+
             `;
 
             

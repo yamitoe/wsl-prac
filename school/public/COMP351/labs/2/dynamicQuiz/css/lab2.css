@@ -9,6 +9,21 @@ body{
 }
 
 .container-quizbox textarea{
-    flex: 100% 1 ;
+    flex: 100% 1;
+}
 
+.container-quizbox div.question{
+    flex: 1 1 40%;
+    display: flex;
+    margin: 2px;
+    justify-content: start;
+    background-color: rgb(95, 146, 121);
+}
+
+.container-quizbox div.question input[type=text]{
+    width: 100%;
+}
+
+.container-quizbox div.question input[type=radio]{
+    width: 20%;
 }
