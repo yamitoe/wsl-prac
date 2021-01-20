@@ -1,0 +1,14 @@
+body{
+    background-color: rgb(182, 229, 231);
+}
+
+.container-quizbox{
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-quizbox textarea{
+    flex: 100% 1 ;
+
+}
