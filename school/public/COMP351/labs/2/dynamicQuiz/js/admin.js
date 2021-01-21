@@ -20,7 +20,7 @@ function loadData(){
 }
 
 loadData();
-
+//I realized I could have simplfied this if I just gave them class names
 function onSave(){
     let updatedArr = [];
     let tempArr= [];
@@ -39,6 +39,11 @@ function onSave(){
                 textData.forEach(node=>{
                     if(node.nodeName == "DIV" && node.className =="question"){
                         tempArr.push(node.children[1].value); 
+                        //radio button
+                        if(node.children[0].checked == true){
+                            o.answer = node.children[0].value;
+                        }
+                        
                     }
                     else{
                         // {question: ""}
@@ -92,19 +97,19 @@ function createTextArea(loopNum=1){
         <h2>Question ${arrData.length} </h2>
         <textarea name="" id="" cols="25" rows="8"></textarea>
         <div class="question">
-            <input type="radio" name="quiz">
+            <input type="radio" name="quiz${arrData.length}" value="A">
             <input type="text">      
         </div>
         <div class="question">
-            <input type="radio" name="quiz">
+            <input type="radio" name="quiz${arrData.length}" value="B">
             <input type="text">      
         </div>
         <div class="question">
-            <input type="radio" name="quiz">
+            <input type="radio" name="quiz${arrData.length}" value="C">
             <input type="text">      
         </div>
         <div class="question">
-            <input type="radio" name="quiz">
+            <input type="radio" name="quiz${arrData.length}" value="D">
             <input type="text">      
         </div>
     `;
@@ -125,19 +130,19 @@ function loadTextArea(){
             ${arrData[count].question}
             </textarea>
             <div class="question">
-                <input type="radio" name="quiz">
+                <input type="radio" name="quiz${count+1}" value="A">
                 <input type="text" value="${arrData[count].choices[0]}" >      
             </div>
             <div class="question">
-                <input type="radio" name="quiz">
+                <input type="radio" name="quiz${count+1}" value="B">
                 <input type="text" value="${arrData[count].choices[1]}" >      
             </div>
             <div class="question">
-                <input type="radio" name="quiz">
+                <input type="radio" name="quiz${count+1}" value="C">
                 <input type="text" value="${arrData[count].choices[2]}" >      
             </div>
             <div class="question">
-                <input type="radio" name="quiz">
+                <input type="radio" name="quiz${count+1}" value="D">
                 <input type="text" value="${arrData[count].choices[3]}" >      
             </div>
         `;

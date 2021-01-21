@@ -10,6 +10,8 @@ body{
 
 .container-quizbox textarea{
     flex: 100% 1;
+    font-size: large;
+    font-weight: 400;
 }
 
 .container-quizbox div.question{
