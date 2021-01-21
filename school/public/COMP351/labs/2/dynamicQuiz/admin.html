@@ -55,9 +55,9 @@
                         });
                          // {question: "" , choices: [1,1,1,1]}
                         o.choices = tempArr;
-                        tempArr.clear;
-                        //To be fused with localstorage
-                        updatedArr.push(o);
+                        tempArr = [];
+                        //To be fused with localstorage //Need to copy object so no pointer issue
+                        updatedArr.push({...o});
                     }
                     console.log(updatedArr);
                 }
