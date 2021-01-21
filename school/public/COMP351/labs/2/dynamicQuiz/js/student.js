@@ -57,23 +57,29 @@ function calcAnswers(){
     // let answers = document.querySelectorAll()('input[name="quiz"]:checked').value;
     // Retrieve  //Data is array in json
     let data = JSON.parse(localStorage.getItem("quizquestion"));
-    let choosenAnswers = getChoosenAnswers();
-
-    let correct = 0;
-
-    for(let x = 0; x < choosenAnswers.length ; x++){
-        console.log(data[x].answer);
-        if(choosenAnswers[x] == data[x].answer){
-            correct++;
-        }
-    }
-
-    let grade =  (correct/choosenAnswers.length ) * 100;
-    
     let answer = document.getElementById("answer");
-    answer.innerHTML = "You got " + correct +" correct answer" + " Your grade is: " +grade +"%";
+    console.log(data.length);
+    if(data.length > 0){
+        let choosenAnswers = getChoosenAnswers();
 
+        let correct = 0;
 
+        for(let x = 0; x < choosenAnswers.length ; x++){
+            console.log(data[x].answer);
+            if(choosenAnswers[x] == data[x].answer){
+                correct++;
+            }
+        }
+
+        let grade =  (correct/choosenAnswers.length ) * 100;
+        
+        
+        answer.innerHTML = "You got " + correct +" correct answer" + " Your grade is: " +grade +"%";
+
+    }
+    else{
+        answer.innerHTML = "There are no questions to submit";
+    }
 
 }
 
