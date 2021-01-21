@@ -7,120 +7,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./css/lab2.css'>
 
-    <script>
-        let arrData = [];
-        //Get localstorage
-        function loadData(){
-            if (typeof(Storage) !== "undefined") {
-                localStorage.clear();  //FOR TESTING REMOVE
-                // Retrieve  //Data is array in json
-                let data = JSON.parse(localStorage.getItem("quizquestion"));
-                if(data != null){
-                    arrData = [...data];
-                    createTextArea();
-                }
-                else{
-                    //If its not intialized
-                    localStorage.setItem("quizquestion",JSON.stringify([]));
-                }
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-            }
-        }
-
-        loadData();
-
-        function onSave(){
-            let updatedArr = [];
-            let tempArr= [];
-            let o = {};
-            if (typeof(Storage) !== "undefined") {
-                //If arr has any questions to save
-                if(arrData.length > 0){
-                    let questionsDOMArr = document.getElementsByClassName("container-quizbox");
-                    //Loop through container
-                    for (const iterator of questionsDOMArr) {
-                        //Don't need the Question number so filter it out //case sensitive
-                        let textData = Array
-                            .from(iterator.children)
-                            .filter(node=>check = node.nodeName!= "H2");
-                        // Grab the data from input fields to store away
-                        textData.forEach(node=>{
-                            if(node.nodeName == "DIV" && node.className =="question"){
-                                tempArr.push(node.children[1].value); 
-                            }
-                            else{
-                                // {question: ""}
-                                o.question = node.value;
-                            }
-                        });
-                         // {question: "" , choices: [1,1,1,1]}
-                        o.choices = tempArr;
-                        tempArr = [];
-                        //To be fused with localstorage //Need to copy object so no pointer issue
-                        updatedArr.push({...o});
-                    }
-                    // console.log(updatedArr);
-                    localStorage.setItem("quizquestion",JSON.stringify(updatedArr));
-                }
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-            }
-        }
-        //Add empty arr to storage
-        function addEmptyArr(){
-            arrData.push([]);
-            if (typeof(Storage) !== "undefined") {
-                localStorage.setItem("quizquestion",JSON.stringify(arrData));
-                
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-            }
-        }
-
-        function onAdd(){
-            addEmptyArr();
-            createTextArea();
-        }
-
-        function onDelete(){
-            let parentNode = document.getElementsByClassName("container-quizbox");
-            let amount = parentNode.length - 1;
-            if(amount >= 0){
-                parentNode[amount].remove(parentNode[amount]);
-            }
-        }
-
-        function createTextArea(loopNum=1){
-            let main = document.getElementsByTagName("MAIN")[0];
-            for(let x = 0; x < loopNum; x++){
-                let container = document.createElement("section");
-                container.className = "container-quizbox";
-                container.innerHTML =`   
-                    <h2>Question ${arrData.length} </h2>
-                    <textarea name="" id="" cols="25" rows="8"></textarea>
-                    <div class="question">
-                        <input type="radio" name="quiz">
-                        <input type="text">      
-                    </div>
-                    <div class="question">
-                        <input type="radio" name="quiz">
-                        <input type="text">      
-                    </div>
-                    <div class="question">
-                        <input type="radio" name="quiz">
-                        <input type="text">      
-                    </div>
-                    <div class="question">
-                        <input type="radio" name="quiz">
-                        <input type="text">      
-                    </div>
-                `;
-
-                main.appendChild(container);
-            }
-        }
-    </script>
 </head>
 <body>
     <div id="result"></div>
@@ -130,6 +16,8 @@
     <button onclick="onAdd()">Add</button>
     <button onclick="onSave()">Save</button>
     <button onclick="onDelete()">Delete</button>
+
+    <script src="./js/admin.js"></script>
     
     
 </body>
