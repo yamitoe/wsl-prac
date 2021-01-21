@@ -1,3 +1,4 @@
+//Its an embedded script so I cant simply import it
 let arrData = [];
 //Get localstorage
 function loadData(){
