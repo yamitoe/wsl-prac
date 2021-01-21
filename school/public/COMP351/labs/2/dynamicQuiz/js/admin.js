@@ -79,6 +79,7 @@ function onDelete(){
     let amount = parentNode.length - 1;
     if(amount >= 0){
         parentNode[amount].remove(parentNode[amount]);
+        onSave();
     }
 }
 
