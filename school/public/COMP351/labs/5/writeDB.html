@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write to Database</title>
+    <link rel="stylesheet" href="./stylesheets/main.css">
+    <script>
+    
+
+        function validateData(score,name){ 
+            if (isNaN(score)) {
+                sendMsg("Input not valid");
+            }else{
+                sendMsg(`You submitted, name: ${name} score: ${score}`);
+            }
+        }
+
+        function sendMsg(text){
+            let container = document.getElementById("result");
+            let msg = document.createElement("div");
+            msg.innerHTML = text;
+
+            container.appendChild(msg);
+        }
+
+        function submitDatabase(){
+            let name =  document.getElementById("name").value;
+            let score =  document.getElementById("score").value;
+
+            validateData(score,name);
+    
+
+        }
+    </script>
+</head>
+<body>
+    <main>
+        <h2>Enter name and Score</h2>
+        <div class="container-input">
+            <label>
+                Name
+                <input type="text" name="data" id="name">
+            </label>
+            <label>
+                Score
+                <input type="number" name="data" id="score">
+            </label>
+            <input type="button" value="Write to DB" onclick="submitDatabase()">
+        </div>
+    </main>
+    <div id="result"></div>
+</body>
+</html>

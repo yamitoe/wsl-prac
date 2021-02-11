@@ -1,0 +1,13 @@
+main .container-input{
+    display: flex;
+    flex-direction:column;
+}
+
+main .container-input label{
+    margin: 5px;
+}
+
+main .container-input input[type=button]{
+    flex: 0 0 50;
+    max-width: 100px;
+}
