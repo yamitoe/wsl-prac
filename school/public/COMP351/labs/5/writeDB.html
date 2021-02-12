@@ -10,26 +10,48 @@
     
 
         function validateData(score,name){ 
+            let valid = true;
             if (isNaN(score)) {
                 sendMsg("Input not valid");
-            }else{
-                sendMsg(`You submitted, name: ${name} score: ${score}`);
+                valid = false;
             }
+            // else{
+            //     sendMsg(`You submitted, name: ${name} score: ${score}`);
+            // }
+            return valid;
         }
 
         function sendMsg(text){
             let container = document.getElementById("result");
-            let msg = document.createElement("div");
-            msg.innerHTML = text;
-
-            container.appendChild(msg);
+            container.innerHTML = text;
         }
 
         function submitDatabase(){
             let name =  document.getElementById("name").value;
             let score =  document.getElementById("score").value;
 
-            validateData(score,name);
+            // let obj = {name,score};
+            // obj = JSON.stringify(obj);
+            let params = `name=${name}&score=${score}`;
+
+
+            if(validateData(score,name)){
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        sendMsg(xhttp.responseText);
+                    }
+                };
+                xhttp.open("POST", "https://adrian-esau.com/readDB", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(params);
+
+            }
+
+//             fetch('https://jsonplaceholder.typicode.com/posts/1')
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
+
     
 
         }
