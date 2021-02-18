@@ -56,12 +56,10 @@ def pathFinder(city1,city2):
         # Add Neighbour Nodes to List
         # Copy possible cities 
         routes = cities.copy()
-        print(routes)
+ 
         # remove current city from possible cities
         routes.remove(currentNode.location)
-        print(routes)
-
-        # possiblePaths.append(*routes)
+        possiblePaths.append( *possiblePaths, *routes)
 
 
 
