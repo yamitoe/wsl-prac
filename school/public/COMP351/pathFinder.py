@@ -13,20 +13,40 @@ class Node:
         # Compare city names, if they are the same its the same node
         return self.location == cityNode.location
 
-    def addHerusticData(self,g,h,f):
+    def addHerusticData(self,g,h):
         self.g = g
-        self.h = f
+        self.h = h
         self.f = self.g + self.h
     
 
 
 
+def createNode(city1,city2):
+    return Node(city1, city2)
+def createMaze():
+    createNode("Abbotsford","Chilliwack")
+
 
 
 
 def pathFinder(city1,city2):
-    cities1 = [{"city": "Chilliwack"},{"city": "Mission"},{"city": "Kent"},{"city": "Hope"}]
-    cities = ["Chilliwack","Mission","Kent","Hope"]
+    cities = ["Chilliwack","Mission","Kent","Hope","Abbotsford"]
+    cities1 = [
+        {"city": "Abbotsford", "TO":"Chilliwack", "g":32.7, "h":.42},
+        {"city": "Abbotsford", "TO":"Mission", "g":16.8, "h":.12},
+        {"city": "Abbotsford", "TO":"Kent", "g":58.3, "h":.75},
+        {"city": "Abbotsford", "TO":"Hope", "g":87.1, "h":1.2},
+ 
+        {"city": "Chilliwack", "TO":"Mission", "g":40.5, "h":.29},
+        {"city": "Chilliwack", "TO":"Kent", "g":28, "h":.32},
+        {"city": "Chilliwack", "TO":"Hope", "g":86.8, "h":.79},
+
+        {"city": "Mission", "TO":"Kent", "g":49.4, "h":.62},
+        {"city": "Mission", "TO":"Hope", "g":81.9, "h":1.08},
+
+        {"city": "Kent", "TO":"Hope", "g":33.5, "h":.46}
+
+    ]
     if city1 not in cities:
         print("Please choose from the following cities: Chilliwack, Mission, Kent or Hope")
     else:
@@ -54,14 +74,16 @@ def pathFinder(city1,city2):
                 currentIndex = index
         # Remove the smallest route from list, so we can add its neighbouring nodes after
         possiblePaths.pop(currentIndex)
+        print("Path removed was: " + currentNode.location)
         previousPaths.append(currentNode)
 
 
         # Copy possible cities 
-        routes = cities1.copy()
+        routes = cities.copy()
  
         # remove current city from possible cities
-        routes.pop(currentIndex)
+        routes.remove(currentNode.location)
+        previousPaths.append(currentNode)
 
         # Add Neighbour Nodes to List
         # Builds the path, create children nodes
@@ -71,13 +93,17 @@ def pathFinder(city1,city2):
             counter = len(possiblePaths)
             while counter >= 0:
                 # Filters dupliactes, will only add new routes
-                if Node(None,city["city"]) not in possiblePaths:
-                    nodeToAdd = Node(Node(None,currentNode.location),city["city"])
-                    # nodeToAdd.addHerusticData()
+                if (Node(None,city) not in possiblePaths ) and Node(None,city) not in previousPaths:
+                    nodeToAdd = Node(Node(None,currentNode.location),city)
+                    for data in cities1:   
+                        # Add data to nodes
+                        if (city == data["city"]  and currentNode.location == data["TO"]) or (currentNode.location == data["city"] and city == data["TO"]):
+                            nodeToAdd.addHerusticData(data["g"],data["h"])
+                            print("Called")
                     possiblePaths.append(nodeToAdd)
                 counter = counter - 1
     
-                
+               
         
  
 
