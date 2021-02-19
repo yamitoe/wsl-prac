@@ -13,7 +13,9 @@ class Node:
         # Compare city names, if they are the same its the same node
         return self.location == cityNode.location
 
-    def calculateCost():
+    def addHerusticData(self,g,h,f):
+        self.g = g
+        self.h = f
         self.f = self.g + self.h
     
 
@@ -23,6 +25,7 @@ class Node:
 
 
 def pathFinder(city1,city2):
+    cities1 = [{"city": "Chilliwack"},{"city": "Mission"},{"city": "Kent"},{"city": "Hope"}]
     cities = ["Chilliwack","Mission","Kent","Hope"]
     if city1 not in cities:
         print("Please choose from the following cities: Chilliwack, Mission, Kent or Hope")
@@ -55,10 +58,10 @@ def pathFinder(city1,city2):
 
 
         # Copy possible cities 
-        routes = cities.copy()
+        routes = cities1.copy()
  
         # remove current city from possible cities
-        routes.remove(currentNode.location)
+        routes.pop(currentIndex)
 
         # Add Neighbour Nodes to List
         # Builds the path, create children nodes
@@ -68,8 +71,10 @@ def pathFinder(city1,city2):
             counter = len(possiblePaths)
             while counter >= 0:
                 # Filters dupliactes, will only add new routes
-                if Node(None,city) not in possiblePaths:
-                    possiblePaths.append(Node(Node(None,currentNode.location),city))
+                if Node(None,city["city"]) not in possiblePaths:
+                    nodeToAdd = Node(Node(None,currentNode.location),city["city"])
+                    # nodeToAdd.addHerusticData()
+                    possiblePaths.append(nodeToAdd)
                 counter = counter - 1
     
                 
