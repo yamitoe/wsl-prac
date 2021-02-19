@@ -59,7 +59,26 @@ def pathFinder(city1,city2):
  
         # remove current city from possible cities
         routes.remove(currentNode.location)
-        possiblePaths.append( *possiblePaths, *routes)
+
+        # This here creates the possible routes for each node
+        
+        for city in routes:
+            counter = len(possiblePaths)
+            while counter >= 0:
+                # Filters dupliactes, will only add new routes
+                if Node(None,city) not in possiblePaths:
+                    possiblePaths.append(Node(None,city))
+                counter = counter - 1
+    
+                
+        
+ 
+
+        # possiblePaths = [*possiblePaths, *routes]
+ 
+        for x in possiblePaths:
+            print(x.location , end = " ")   
+        print("newloop")
 
 
 
@@ -72,6 +91,8 @@ def pathFinder(city1,city2):
             while current is not None:
                 path.append(current.location)
                 current = current.parent
+            print("Path was called")
+            print(currentNode.location)
             return path.reverse()
 
 
