@@ -93,6 +93,7 @@ def pathFinder(city1,city2):
             counter = len(possiblePaths)
             while counter >= 0:
                 # Filters dupliactes, will only add new routes
+                
                 if (Node(None,city) not in possiblePaths ) and Node(None,city) not in previousPaths:
                     nodeToAdd = Node(Node(None,currentNode.location),city)
                     for data in cities1:   

@@ -1,0 +1,31 @@
+body{
+    background-color: rgb(182, 229, 231);
+}
+
+.container-quizbox,.container-add{
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-quizbox textarea,.container-add textarea{
+    flex: 100% 1;
+    font-size: large;
+    font-weight: 400;
+}
+
+.container-quizbox div.question,.container-add div.question{
+    flex: 1 1 40%;
+    display: flex;
+    margin: 2px;
+    justify-content: start;
+    background-color: rgb(95, 146, 121);
+}
+
+.container-quizbox div.question input[type=text]{
+    width: 100%;
+}
+
+.container-quizbox div.question input[type=radio]{
+    width: 20%;
+}

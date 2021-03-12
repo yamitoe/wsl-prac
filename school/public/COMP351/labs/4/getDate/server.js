@@ -7,6 +7,7 @@ http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   res.write(util.date(q.query.name));
   res.end();
+  console.log("test");
 }).listen(8080);
 
 console.log("listening");

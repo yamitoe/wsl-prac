@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/lab2.css'>
+
+</head>
+<body>
+    <button><a href="./index.html">Return to Lab 2</a></button>
+    <main>
+        <h2>Admin Page</h2>
+    </main>
+
+    <h2>Add/Update Questions Here </h2>
+    <div class="insertupdate">
+        <label>Insert <input type="radio" name="insertupdate" value="POST" checked onclick="enableDisable(true)"> </label>
+        <label>Update <input type="radio" name="insertupdate" value="PUT" onclick="enableDisable(false)"></label>
+        <input type="text" id="textBoxID" disabled placeholder="Update ID">   
+    </div>
+    <section class="container-add">
+        <textarea name="" id="" cols="25" rows="8"></textarea>
+        <div class="question">
+            <input type="radio" name="quizAdd" value="A">
+            <input type="text">      
+        </div>
+        <div class="question">
+            <input type="radio" name="quizAdd" value="B">
+            <input type="text">      
+        </div>
+        <div class="question">
+            <input type="radio" name="quizAdd" value="C">
+            <input type="text">      
+        </div>
+        <div class="question">
+            <input type="radio" name="quizAdd" value="D">
+            <input type="text">      
+        </div>
+    </section>
+    <button onclick="onAdd()">Add</button>
+    <button onclick="onSave()">Save</button>
+    <button onclick="onDelete()">Delete</button>
+    <button><a href="./index.html">Return to Lab 2</a></button>
+    <div id="result"></div>
+
+    <script src="./js/admin.js"></script>
+
+    
+    
+</body>
+</html>
