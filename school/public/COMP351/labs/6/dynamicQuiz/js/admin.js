@@ -126,24 +126,24 @@ function loadTextArea(){
         container.innerHTML =`   
             <h2>Question ${count+1} </h2>
             <h3>Question ID: ${arrData[count].qid}</h3>
-            <textarea name="" cols="25" rows="8">
+            <textarea name="" cols="25" rows="8" disabled>
             ${arrData[count].answers.question}
             </textarea>
             <div class="question">
-                <input type="radio" name="quiz${count+1}" value="A">
-                <input type="text" value="${arrData[count].answers.choices[0]}" >      
+                <input type="radio" name="quiz${count+1}" value="A" disabled>
+                <input type="text" value="${arrData[count].answers.choices[0]}" disabled>      
             </div>
             <div class="question">
-                <input type="radio" name="quiz${count+1}" value="B">
-                <input type="text" value="${arrData[count].answers.choices[1]}" >      
+                <input type="radio" name="quiz${count+1}" value="B" disabled>
+                <input type="text" value="${arrData[count].answers.choices[1]}" disabled>      
             </div>
             <div class="question">
-                <input type="radio" name="quiz${count+1}" value="C">
-                <input type="text" value="${arrData[count].answers.choices[2]}" >      
+                <input type="radio" name="quiz${count+1}" value="C" disabled>
+                <input type="text" value="${arrData[count].answers.choices[2]}" disabled>      
             </div>
             <div class="question">
-                <input type="radio" name="quiz${count+1}" value="D">
-                <input type="text" value="${arrData[count].answers.choices[3]}" >      
+                <input type="radio" name="quiz${count+1}" value="D" disabled>
+                <input type="text" value="${arrData[count].answers.choices[3]}" disabled>      
             </div>
         `;
 
