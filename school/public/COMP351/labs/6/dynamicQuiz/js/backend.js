@@ -12,7 +12,6 @@ app.use(function(req, res, next) {
 });
 var pgp = require('pg-promise')(/* options */) ;
 
-console.log(process.env.host);
 const cn = {
     host: process.env.host,
     database: process.env.database,

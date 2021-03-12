@@ -1,50 +1,55 @@
-//Its an embedded script so I cant simply import it
+let url = "http://localhost:8080";
 let arrData = [];
 //Get localstorage
 function loadData(){
-    if (typeof(Storage) !== "undefined") {
-        
-        // Retrieve  //Data is array in json
-        let data = JSON.parse(localStorage.getItem("quizquestion"));
-        if(data != null){
-            arrData = [...data];
-            loadTextArea();
-        }
-        else{
-            //If its not intialized
-            localStorage.setItem("quizquestion",JSON.stringify([]));
-        }
-    } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-    }
+    readDatabase(url);
 }
+
+function readDatabase(url){
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let data = JSON.parse(this.responseText);
+            if(data != null){
+                arrData = [...data];
+                loadTextArea();
+            }
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+ 
+} 
+
 loadData();
 
 function loadTextArea(){
     let main = document.getElementsByTagName("MAIN")[0];
     for(let count = 0; count < arrData.length; count++){
+       // console.log(arrData[count].question);
         let container = document.createElement("section");
         container.className = "container-quizbox";
         container.innerHTML =`   
             <h2>Question ${count+1} </h2>
-            <textarea name="" cols="25" rows="8" disabled>
-            ${arrData[count].question}
+            <h3>Question ID: ${arrData[count].qid}</h3>
+            <textarea name="" cols="25" rows="8">
+            ${arrData[count].answers.question}
             </textarea>
             <div class="question">
                 <input type="radio" name="quiz${count+1}" value="A">
-                <input type="text" disabled value="${arrData[count].choices[0]}" >      
+                <input type="text" value="${arrData[count].answers.choices[0]}" >      
             </div>
             <div class="question">
                 <input type="radio" name="quiz${count+1}" value="B">
-                <input type="text" disabled value="${arrData[count].choices[1]}" >      
+                <input type="text" value="${arrData[count].answers.choices[1]}" >      
             </div>
             <div class="question">
                 <input type="radio" name="quiz${count+1}" value="C">
-                <input type="text" disabled value="${arrData[count].choices[2]}" >      
+                <input type="text" value="${arrData[count].answers.choices[2]}" >      
             </div>
             <div class="question">
                 <input type="radio" name="quiz${count+1}" value="D">
-                <input type="text" disabled value="${arrData[count].choices[3]}" >      
+                <input type="text" value="${arrData[count].answers.choices[3]}" >      
             </div>
         `;
 
@@ -56,17 +61,16 @@ function loadTextArea(){
 function calcAnswers(){
     // let answers = document.querySelectorAll()('input[name="quiz"]:checked').value;
     // Retrieve  //Data is array in json
-    let data = JSON.parse(localStorage.getItem("quizquestion"));
+    // let data = JSON.parse(localStorage.getItem("quizquestion"));
     let answer = document.getElementById("answer");
-    console.log(data.length);
-    if(data.length > 0){
+
+    if(arrData.length > 0){
         let choosenAnswers = getChoosenAnswers();
 
         let correct = 0;
 
         for(let x = 0; x < choosenAnswers.length ; x++){
-            console.log(data[x].answer);
-            if(choosenAnswers[x] == data[x].answer){
+            if(choosenAnswers[x] == arrData[x].answers.answer){
                 correct++;
             }
         }
