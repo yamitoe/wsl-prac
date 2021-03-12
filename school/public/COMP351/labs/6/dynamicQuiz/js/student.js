@@ -1,4 +1,4 @@
-let url = "http://localhost:8080";
+let url = "http://localhost:5001/forschool-5a2a8/us-central1/app";
 let arrData = [];
 //Get localstorage
 function loadData(){
@@ -49,7 +49,7 @@ function loadTextArea(){
             </div>
             <div class="question">
                 <input type="radio" name="quiz${count+1}" value="D">
-                <input type="text" value="${arrData[count].answers.choices[3]}" disabled>      
+                <input type="text" value="${arrData[count].answers.choices[3]}" disabledfi>      
             </div>
         `;
 

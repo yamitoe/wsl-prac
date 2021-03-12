@@ -1,6 +1,7 @@
 
 let arrData = [];
-let url = "http://localhost:8080";
+let url = "http://localhost:5001/forschool-5a2a8/us-central1/app";
+
 //Get localstorage
 function loadData(){
     readDatabase(url);
