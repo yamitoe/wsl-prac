@@ -20,7 +20,6 @@ const cn = {
     database: process.env.database,
     user: process.env.user, 
     password: process.env.password,
-    // "types" - in case you want to set custom type parsers on the pool level
 };
 
 var db = pgp(cn);

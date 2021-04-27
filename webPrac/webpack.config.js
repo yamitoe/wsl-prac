@@ -22,6 +22,10 @@ module.exports = {
             "sass-loader",
           ],
         },
+        {
+          test:/\.(js|jsx)?$/,
+         use: ['babel-loader']
+       }
       ],
     }
   };

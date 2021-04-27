@@ -3,8 +3,12 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/",
+        "source": "/backend",
         "function": "app"
+      },
+      {
+        "source": "/test",
+        "function": "bigben"
       }
     ],
     "ignore": [

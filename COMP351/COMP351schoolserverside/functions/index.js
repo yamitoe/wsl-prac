@@ -9,15 +9,28 @@ let util = require("./modules/utils");
 exports.serverside = functions.https.onRequest((req, res) => {
     const q = url.parse(req.url, true);
 
+
     if(q.pathname.includes("/COMP351/labs/4/writeFile") == true){
-        res.status(200).send(`<!doctype html>
-        <head>
-          <title>Time</title>
-        </head>
-        <body>
-          Just to show the page loaded
-        </body>
-      </html>`);
+      res.setHeader*('Access-Control-Allow-Origin: *');
+      res.setHeader('Content-Type', 'text/html');
+          // Request methods you wish to allow
+    res.setHeader('X-Content-Type-Options', nosniff);
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+      //   res.status(200).send(`<!doctype html>
+      //   <head>
+      //     <title>Time</title>
+      //   </head>
+      //   <body>
+      //     Just to show the page loaded
+      //   </body>
+      // </html>`);
         fs.appendFile('./file.txt', q.query.text + "\r\n", function (err) {
             if (err) throw err;
             console.log('Saved!');

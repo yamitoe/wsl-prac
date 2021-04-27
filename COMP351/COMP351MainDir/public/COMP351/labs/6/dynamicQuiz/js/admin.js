@@ -1,6 +1,6 @@
 
 let arrData = [];
-let url = "http://localhost:5001/forschool-5a2a8/us-central1/app";
+let url = "https://us-central1-forschool-5a2a8.cloudfunctions.net/app";
 
 //Get localstorage
 function loadData(){

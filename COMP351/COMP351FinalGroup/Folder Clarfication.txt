@@ -1,0 +1,5 @@
+REMINDER
+
+There are two folders, the one I was actaully developiog in with all the commit logs + firebase implentation, and the cutdown teachers version for submission 
+as the teacher wants a specefic order and folders only, so keeping my firebase functions folder is a no go hence having to make two different
+files. The teacher version also has the edited files from my lab partner, login page + 2 plain html page.
